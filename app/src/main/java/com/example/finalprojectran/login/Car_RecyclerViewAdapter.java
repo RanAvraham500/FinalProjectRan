@@ -1,8 +1,10 @@
 package com.example.finalprojectran.login;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +20,9 @@ import java.util.ArrayList;
 
 public class Car_RecyclerViewAdapter extends RecyclerView.Adapter<Car_RecyclerViewAdapter.MyViewHolder> {
     Context context;
-    ArrayList<String> carTvIndexes;
+    String[] carTvIndexes;
 
-    public Car_RecyclerViewAdapter(Context context, ArrayList<String> carTvIndexes) {
+    public Car_RecyclerViewAdapter(Context context, String[] carTvIndexes) {
         this.context = context;
         this.carTvIndexes = carTvIndexes;
     }
@@ -36,40 +38,26 @@ public class Car_RecyclerViewAdapter extends RecyclerView.Adapter<Car_RecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull Car_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.tvCarNum.setText(carTvIndexes.get(position) + "");
-        int i = position;
-        holder.etCarModel.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                LoginBasic.carModels.set(i, (String) s);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        holder.tvCarNum.setText(carTvIndexes[position] + "");
+        //holder.etCarModel.setId(position);
     }
 
     @Override
     public int getItemCount() {
-        return carTvIndexes.size();
+        return carTvIndexes.length;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvCarNum;
-        EditText etCarModel;
+        EditText etCarModel, etCarMileage, etCarInsurance;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvCarNum = itemView.findViewById(R.id.tvCarNum);
             etCarModel = itemView.findViewById(R.id.etCarNum);
+            etCarMileage = itemView.findViewById(R.id.etCarMileage);
+            etCarInsurance = itemView.findViewById(R.id.etCarInsurance);
         }
     }
 }

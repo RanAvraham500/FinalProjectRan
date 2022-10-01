@@ -1,5 +1,9 @@
 package com.example.finalprojectran.login;
 
+import java.util.Date;
+
 public class TeachingCar {
-    //pass
+    String model;
+    int mileage;
+    Date insuranceExpireDate
 }

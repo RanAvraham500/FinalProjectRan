@@ -15,17 +15,17 @@
         android:background="@drawable/oval_rectangle"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="35dp"
-        android:weightSum="7">
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:weightSum="8">
         <ViewFlipper
             android:id="@+id/vp"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:padding="10dp"
-            android:layout_weight="6">
+            android:layout_weight="7">
             <!--עמוד 1-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,6 +77,17 @@
                     android:textDirection="rtl"
                     />
                 <EditText
+                    android:id="@+id/etLessonFare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="מחיר לשיעור"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"
+                    android:textDirection="rtl"
+                    />
+                <EditText
                     android:id="@+id/etPhoneNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,7 +111,7 @@
                     android:textDirection="rtl"
                     />
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rvCars">
 
