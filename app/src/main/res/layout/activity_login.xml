@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/LL">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/oval_rectangle"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:weightSum="8">
+        <ViewFlipper
+            android:id="@+id/vp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:layout_weight="7">
+            <!--עמוד 1-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="אנא היכנס עם גוגל"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+                    />
+                <Button
+                    android:id="@+id/btnSignInWithGoogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign in with google"
+                    />
+            </LinearLayout>
+
+            <!--עמוד 2-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ראינו שאינך רשום במערכת אנא מלא את הפרטים במלואם:"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="שם מלא"
+                    android:drawableTint="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:digits="@string/text_input_type"
+                    />
+                <EditText
+                    android:id="@+id/etPhoneNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="מספר טלפון"
+                    android:drawableTint="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"
+                    />
+
+                <!--test-->
+                <!--<EditText
+                    android:id="@+id/etCarNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="מספר מכוניות לימוד"
+                    android:drawableTint="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:inputType="number"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rvCars">
+
+                </androidx.recyclerview.widget.RecyclerView>-->
+            </LinearLayout>
+        </ViewFlipper>
+
+        <!--next and prev buttons-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:padding="15dp"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/btnPrev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:onClick="previousView"
+                android:text="קודם" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:onClick="nextView"
+                android:text="הבא" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
