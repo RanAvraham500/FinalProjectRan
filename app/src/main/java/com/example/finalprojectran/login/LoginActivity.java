@@ -1,6 +1,8 @@
 package com.example.finalprojectran.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -16,10 +18,14 @@ import android.widget.ViewFlipper;
 
 import com.example.finalprojectran.R;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends LoginBasic implements View.OnClickListener{
     Button btnSignInWithGoogle, btnNext, btnPrev;
     EditText etName, etPhoneNum, etCarNum;
     ViewFlipper vf;
+    ArrayList<String> carTvIndexes = new ArrayList<>();
+    RecyclerView rvCars;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +52,39 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener{
 
         //setting up the editTexts
         etName = findViewById(R.id.etName);
+        etName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //creating car recyclerView
+                rvCars = findViewById(R.id.rvCars);
+                setUpArrayList(Integer.parseInt((String) s));
+                Car_RecyclerViewAdapter adapter = new Car_RecyclerViewAdapter(LoginActivity.this, carTvIndexes);
+                rvCars.setAdapter(adapter);
+                rvCars.setLayoutManager(new LinearLayoutManager(LoginActivity.this));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         etPhoneNum = findViewById(R.id.etPhoneNum);
+        etCarNum = findViewById(R.id.etCarNum);
 
+        //google login
         createRequest();
-    }
 
+    }
+    public void setUpArrayList(int len) {
+        for (int i = 0; i < len; i++) {
+            carTvIndexes.add("מכונית" + i);
+        }
+    }
 
     @Override
     public void onClick(View view) {

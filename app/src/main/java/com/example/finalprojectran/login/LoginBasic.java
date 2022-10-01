@@ -38,12 +38,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
+
 public class LoginBasic extends AppCompatActivity {
 
     private SignInClient oneTapClient;
     private BeginSignInRequest signInRequest;
     private final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private FirebaseAuth mAuth;
+    public static ArrayList<String> carModels;
 
     private int pageCounter = 0;
     public void flipNext(ViewFlipper vf, Button btnPrev, Button btnNext) {
@@ -92,7 +95,6 @@ public class LoginBasic extends AppCompatActivity {
                 .setAutoSelectEnabled(true)
                 .build();
     }
-
     public boolean signInIntent() {
         final boolean[] returnThis = {false};
         oneTapClient.beginSignIn(signInRequest)
@@ -106,7 +108,7 @@ public class LoginBasic extends AppCompatActivity {
                             returnThis[0] = true;
 
                         } catch (IntentSender.SendIntentException e) {
-                            //Log.e(TAG, "Couldn't start One Tap UI: " + e.getLocalizedMessage());
+                            Log.e("MyLog", "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                         }
                     }
                 })
@@ -169,4 +171,5 @@ public class LoginBasic extends AppCompatActivity {
             //if the code isn't correct
         }
     }
+
 }

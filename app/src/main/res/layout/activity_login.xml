@@ -19,13 +19,13 @@
         android:layout_marginTop="100dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
-        android:weightSum="8">
+        android:weightSum="7">
         <ViewFlipper
             android:id="@+id/vp"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:padding="10dp"
-            android:layout_weight="7">
+            android:layout_weight="6">
             <!--עמוד 1-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,36 +70,41 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="שם מלא"
-                    android:drawableTint="@color/black"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:digits="@string/text_input_type"
+                    android:textDirection="rtl"
                     />
                 <EditText
                     android:id="@+id/etPhoneNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="מספר טלפון"
-                    android:drawableTint="@color/black"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:inputType="number"
+                    android:textDirection="rtl"
                     />
-
                 <!--test-->
-                <!--<EditText
+                <EditText
                     android:id="@+id/etCarNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="מספר מכוניות לימוד"
-                    android:drawableTint="@color/black"
                     android:textColorHint="@color/gray"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black"
                     android:inputType="number"
+                    android:textDirection="rtl"
                     />
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rvCars">
 
-                </androidx.recyclerview.widget.RecyclerView>-->
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </ViewFlipper>
 
