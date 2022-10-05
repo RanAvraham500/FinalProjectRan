@@ -3,6 +3,7 @@ package com.example.finalprojectran.login;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,6 +20,7 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener{
     Button btnSignInWithGoogle, btnNext, btnPrev;
     EditText etName, etPhoneNum, etCarNum;
     ViewFlipper vf;
+    LoginViewFlipper lvf;
     String[] carTvIndexes;
     RecyclerView rvCars;
     @Override
@@ -36,14 +38,15 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener{
         btnSignInWithGoogle = findViewById(R.id.btnSignInWithGoogle);
         btnSignInWithGoogle.setOnClickListener(this);//
         btnNext = findViewById(R.id.btnNext);
-        btnNext.setOnClickListener(this);//
+        btnNext.setOnClickListener(this);
+        btnNext.setAlpha(0);//
         btnPrev = findViewById(R.id.btnPrev);
         btnPrev.setOnClickListener(this);
         btnPrev.setAlpha(0);//
 
         //setting up view flipper
         vf = findViewById(R.id.vp);
-        vf.setDisplayedChild(0);
+        lvf = new LoginViewFlipper(this);
 
         //setting up the recyclerView
         rvCars = findViewById(R.id.rvCars);
@@ -81,7 +84,7 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener{
 
 
         //google login
-        createRequest();
+        createRequest(this);
     }
     public void setUpArr(int len) {
         carTvIndexes = new String[len];
@@ -96,13 +99,34 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener{
         btnAnimation(tmp);
 
         if (tmp.equals(btnSignInWithGoogle)) {
-            if (signInIntent()) {
-                flipNext(vf, btnPrev, btnNext);
-            }
+            signInIntent();
+            lvf.flipNext();
         } else if (tmp.equals(btnNext)) {
-            flipNext(vf, btnPrev, btnNext);
+            lvf.flipNext();
         } else {
-            flipPrev(vf, btnPrev, btnNext);
+            lvf.flipPrev();
         }
     }
+
+    public class LoginViewFlipper {
+        Context context;
+        public LoginViewFlipper(Context context) {
+            this.context = context;
+        }
+        public void flipNext() {
+            vf.setInAnimation(context, R.anim.slide_in_right_next);
+            vf.setOutAnimation(context, R.anim.slide_in_left_next);
+            btnPrev.setAlpha(1);
+            btnNext.setAlpha(0);
+            vf.showNext();
+        }
+        public void flipPrev() {
+            vf.setInAnimation(context, R.anim.slide_in_left_prev);
+            vf.setOutAnimation(context, R.anim.slide_in_right_prev);
+            btnPrev.setAlpha(0);
+            btnNext.setAlpha(1);
+            vf.showPrevious();
+        }
+    }
+
 }

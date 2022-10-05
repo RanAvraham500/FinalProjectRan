@@ -5,5 +5,5 @@ import java.util.Date;
 public class TeachingCar {
     String model;
     int mileage;
-    Date insuranceExpireDate
+    Date insuranceExpireDate;
 }
