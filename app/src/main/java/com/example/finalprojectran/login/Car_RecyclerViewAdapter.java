@@ -1,10 +1,6 @@
 package com.example.finalprojectran.login;
 
 import android.content.Context;
-import android.graphics.drawable.AnimationDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalprojectran.R;
 
-import java.util.ArrayList;
-
 public class Car_RecyclerViewAdapter extends RecyclerView.Adapter<Car_RecyclerViewAdapter.MyViewHolder> {
     Context context;
-    String[] carTvIndexes;
+    String[] tvIndexes;
 
     public Car_RecyclerViewAdapter(Context context, String[] carTvIndexes) {
         this.context = context;
-        this.carTvIndexes = carTvIndexes;
+        this.tvIndexes = carTvIndexes;
     }
 
     @NonNull
@@ -38,13 +32,13 @@ public class Car_RecyclerViewAdapter extends RecyclerView.Adapter<Car_RecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull Car_RecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.tvCarNum.setText(carTvIndexes[position] + "");
+        holder.tvCarNum.setText(tvIndexes[position] + "");
         //holder.etCarModel.setId(position);
     }
 
     @Override
     public int getItemCount() {
-        return carTvIndexes.length;
+        return tvIndexes.length;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
