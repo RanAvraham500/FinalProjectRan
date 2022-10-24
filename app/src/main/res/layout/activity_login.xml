@@ -9,11 +9,15 @@
     android:gravity="center"
     android:background="@drawable/gradient_list"
     android:id="@+id/LLMain">
+    <!--הצגת שם המשתמש-->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="#8DFFFFFF"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/oval_rectangle"
         android:padding="10dp">
         <TextView
             android:id="@+id/tvCurrUser"
@@ -26,6 +30,7 @@
             android:textColor="@color/black"/>
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +38,6 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_marginBottom="40dp"
-
         android:layout_marginEnd="25dp"
         android:layout_marginStart="25dp"
         android:weightSum="8">
@@ -145,46 +149,60 @@
                     android:text="הכנס את המכוניות שלך:"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tvCarHelper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvCarHeadline"
+                    android:layout_alignParentEnd="true"
+                    android:text="(אין חובה למלא את הפרטים בדף זה, ניתן לדלג ולמלא מאוחר יותר)"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    />
                 <LinearLayout
                     android:id="@+id/LLCar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/tvCarHeadline"
+                    android:layout_below="@+id/tvCarHelper"
                     android:layoutDirection="rtl"
                     android:layout_centerHorizontal="true"
                     android:padding="10dp">
                     <Button
                         android:id="@+id/btnAddCar"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:text="+"
+                        android:textSize="35sp"
                         />
                     <EditText
                         android:id="@+id/etCarNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
+                        android:textSize="35sp"
                         android:inputType="number"
                         android:textColor="@color/black"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginStart="5dp"
+                        android:backgroundTint="#00AAAAAA"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
                         />
                     <Button
                         android:id="@+id/btnReduceCar"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:text="-"
-
+                        android:textSize="35sp"
                         />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCars"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/LLCar">
+                    android:layout_below="@+id/LLCar"
+                    android:background="#00AAAAAA">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
@@ -204,46 +222,60 @@
                     android:layout_alignParentEnd="true"
                     android:textSize="20sp"
                     android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/tvStudentHelper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvStudentHeadline"
+                    android:layout_alignParentEnd="true"
+                    android:text="(אין חובה למלא את הפרטים בדף זה, ניתן לדלג ולמלא מאוחר יותר)"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    />
                 <LinearLayout
                     android:id="@+id/LLStudent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/tvStudentHeadline"
+                    android:layout_below="@+id/tvStudentHelper"
                     android:layoutDirection="rtl"
                     android:layout_centerHorizontal="true"
                     android:padding="10dp">
                     <Button
                         android:id="@+id/btnAddStudent"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:text="+"
+                        android:textSize="35sp"
                         />
                     <EditText
                         android:id="@+id/etStudentNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
+                        android:textSize="35sp"
                         android:inputType="number"
                         android:textColor="@color/black"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginStart="5dp"
+                        android:backgroundTint="#00AAAAAA"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
                         />
                     <Button
                         android:id="@+id/btnReduceStudent"
-                        android:layout_width="40dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:text="-"
-
+                        android:textSize="35sp"
                         />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvStudents"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LLStudent"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:background="#00AAAAAA">
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
         </ViewFlipper>

@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#939191</color>
     <color name="light_blue">#0ADBC9</color>
+    <color name="card_blue">#95E7E7</color>
+    <color name="card_pink">#E65E5E</color>
+    <color name="transparent">#00AAAAAA</color>
 </resources>

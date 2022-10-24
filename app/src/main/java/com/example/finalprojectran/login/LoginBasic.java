@@ -1,18 +1,17 @@
 package com.example.finalprojectran.login;
 
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.ViewFlipper;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalprojectran.R;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,34 +20,58 @@ public class LoginBasic extends AppCompatActivity {
     public final int REQ_CODE = 2;  // Can be any integer unique to the Activity.
     GoogleSignInClient googleSignInClient;
     FirebaseAuth fbAuth;
-    FirebaseAuth.AuthStateListener fbAuthListener;
-    public void btnAnimation(View view) {
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.button_bounce);
-        view.startAnimation(anim);
-    }
-    public void createRequest() {
-        GoogleSignInOptions googleSignInOptions=new GoogleSignInOptions.Builder(
-                GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+    Button btnNext, btnPrev,
+            btnAddCar, btnReduceCar,
+            btnAddStudent, btnReduceStudent,
+            btnLogOut;
+    SignInButton btnSignInWithGoogle;
+    EditText etName, etLessonFare, etPhoneNum,
+            etCarNum, etStudentNum;
+    TextView tvCurrUser;
+    ViewFlipper vf;
+    CardComponents[] content;
+    RecyclerView rvCars, rvStudents;
+    LinearLayout LLMain;
+    FirebaseUser fbUser;
 
-        // Initialize sign in client
-        googleSignInClient = GoogleSignIn.getClient(this
-                ,googleSignInOptions);
-        fbAuth = FirebaseAuth.getInstance();
-        fbAuth.addAuthStateListener(fbAuthListener);
-        fbAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+    static int carCount, studentCount = 0;
 
-            }
-        };
+    /**
+     * Methods to hide or show a button on the app*/
+    public void hideButton(Button btn) {
+        btn.setAlpha(0);
+        btn.setClickable(false);
     }
-    public void createSignInIntent() {
-        // Initialize sign in intent
-        Intent intent = googleSignInClient.getSignInIntent();
-        // Start activity for result
-        startActivityForResult(intent,REQ_CODE);
+    public void showButton(Button btn) {
+        btn.setAlpha(1);
+        btn.setClickable(true);
+    }
+
+    /**
+     * A class which contains two views as it's attributes
+     * One is a text view and the other is an image view
+     * this class is used to create an array that creates the recycler view cards*/
+    public static class CardComponents {
+        int carBackgroundRes;
+        String text;
+        int imageRes;
+
+        public CardComponents(int carBackgroundRes, String text, int imageRes) {
+            this.carBackgroundRes = carBackgroundRes;
+            this.text = text;
+            this.imageRes = imageRes;
+        }
+
+    }
+
+
+    public static class Student {
+
+    }
+    public static class Teacher {
+
+    }
+    public static class Car {
+
     }
 }
