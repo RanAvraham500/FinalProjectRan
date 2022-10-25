@@ -56,9 +56,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LoginActivity.recyclerOnClick();
+
                 }
             });
+        }
+
+        public interface RecyclerOnClickListener {
+            void recyclerOnClick();
         }
     }
 }
