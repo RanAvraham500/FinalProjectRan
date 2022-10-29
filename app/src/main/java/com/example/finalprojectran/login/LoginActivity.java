@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.finalprojectran.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,7 +28,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class LoginActivity extends LoginBasic implements View.OnClickListener, TextWatcher, FirebaseAuth.AuthStateListener {
+public class LoginActivity extends LoginBasic implements
+        View.OnClickListener,
+        TextWatcher,
+        FirebaseAuth.AuthStateListener,
+        RecyclerViewAdapter.MyViewHolder.RecyclerOnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +142,9 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener, T
         if (fbUser != null) {
             showButton(btnLogOut);
         }
+
+        //setting up the view flipper on click listener
+        RecyclerViewAdapter.MyViewHolder.setRecyclerOnClickListener(this);
     }
     /**
      * The onClick method, is where we know what button was pressed*/
@@ -372,12 +380,6 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener, T
     }
 
     /**
-     * When a view in the recycler view is clicked this function is used*/
-    public static void recyclerOnClick() {
-
-    }
-
-    /**
      * Edit Texts' on text changed listeners, on the second page (page 1)*/
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -402,5 +404,20 @@ public class LoginActivity extends LoginBasic implements View.OnClickListener, T
     @Override
     public void afterTextChanged(Editable s) {
 
+    }
+
+    /**
+     * Recycler view on view clicked method*/
+    @Override
+    public void recyclerOnClick(View view) {
+        //firstly check if an object was already assigned to the view
+        //if not let the user assign an object to the view, using edit texts in the dialog
+        //if an object is already assigned show the details of the object, and give the user a way to change the assigned object
+
+        if (vf.getDisplayedChild() == 2) {
+            Toast.makeText(this, "Car", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
+        }
     }
 }

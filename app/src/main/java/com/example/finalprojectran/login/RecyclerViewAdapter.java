@@ -48,6 +48,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CardView card;
         TextView cardTv;
         ImageView cardImage;
+        static RecyclerOnClickListener mRecyclerOnClickListener;
+        public static void setRecyclerOnClickListener(RecyclerOnClickListener recyclerOnClickListener) {
+            mRecyclerOnClickListener = recyclerOnClickListener;
+        }
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             card = itemView.findViewById(R.id.card);
@@ -56,13 +60,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    mRecyclerOnClickListener.preformClick(itemView);
                 }
             });
         }
 
         public interface RecyclerOnClickListener {
-            void recyclerOnClick();
+            void recyclerOnClick(View view);
+
+            default void preformClick(View view) {
+                recyclerOnClick(view);
+            }
         }
     }
 }

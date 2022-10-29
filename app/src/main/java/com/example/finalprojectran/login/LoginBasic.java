@@ -1,5 +1,7 @@
 package com.example.finalprojectran.login;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -7,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,4 +77,11 @@ public class LoginBasic extends AppCompatActivity {
     public static class Car {
 
     }
+    public static class RecyclerDialog extends Dialog {
+
+        public RecyclerDialog(@NonNull Context context) {
+            super(context);
+        }
+    }
+
 }
